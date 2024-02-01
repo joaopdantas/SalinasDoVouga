@@ -6,23 +6,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.ProductionManagerController">
+<AnchorPane id="AnchorPane" prefHeight="445.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.ProductionManagerController">
     <children>
         <VBox alignment="CENTER" spacing="10" />
 
-        <TableView fx:id="productionTableView" layoutY="50.0" prefHeight="387.0" prefWidth="681.0">
+        <TableView fx:id="productionTableView" layoutX="30.0" layoutY="29.0" prefHeight="376.0" prefWidth="627.0">
             <columns>
-                <TableColumn fx:id="batchIdColumn" text="Batch ID" />
-                <TableColumn fx:id="productTypeColumn" text="Product Type" />
-                <TableColumn fx:id="productionDateColumn" text="Production Date" />
+                <TableColumn fx:id="lotNumberColumn" text="Lot Number" />
+                <TableColumn fx:id="productTypeColumn" prefWidth="95.1999740600586" text="Product Type" />
+                <TableColumn fx:id="productionDateColumn" prefWidth="113.60003662109375" text="Production Date" />
+                <TableColumn fx:id="associatedTanksColumn" prefWidth="104.800048828125" text="Associated Tanks" />
+                <TableColumn fx:id="associatedWorkersColumn" prefWidth="123.20004272460938" text="Associated Workers" />
+                <TableColumn fx:id="weightQuantityColumn" prefWidth="110.39996337890625" text="Weight/Quantity" />
                 <!-- Add more columns based on your data model -->
             </columns>
         </TableView>
 
-        <Button layoutX="214.0" layoutY="14.0" onAction="#handleCreateNewBatch" text="Create New Batch" />
-        <Button layoutX="14.0" layoutY="14.0" onAction="#handleManageProduction" text="Manage Production Process" />
-        <Button layoutX="114.0" layoutY="14.0" onAction="#handleViewProductionDetails" text="View Production Details" />
-        <Button layoutX="314.0" layoutY="14.0" onAction="#handleAssociateBatches" text="Associate Batches with Workers" />
-        <Button layoutX="414.0" layoutY="14.0" onAction="#handleGenerateFinalBatches" text="Generate Final Product Batches" />
+
+        <Button layoutX="664.0" layoutY="45.0" onAction="#handleCreateNewBatch" text="Create New Batch" />
+        <!--<Button layoutX="422.0" layoutY="233.0" onAction="#handleManageProduction" text="Manage Production Process" />
+        <Button layoutX="433.0" layoutY="166.0" onAction="#handleViewProductionDetails" text="View Production Details" />
+        <Button layoutX="412.0" layoutY="63.0" onAction="#handleAssociateBatches" text="Associate Batches with Workers" />
+        <Button layoutX="414.0" layoutY="14.0" onAction="#handleGenerateFinalBatches" text="Generate Final Product Batches" /> -->
     </children>
 </AnchorPane>

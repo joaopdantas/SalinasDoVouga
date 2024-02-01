@@ -7,9 +7,36 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.ProductionManagerController">
+<?import javafx.collections.FXCollections?>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.ProductionManagerController">
     <children>
-        <Text layoutX="14.0" layoutY="46.0" text="Create New Batch" />
-        <Button layoutX="14.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleCreateNewBatch" text="Create Batch" />
+        <Text layoutX="14.0" layoutY="14.0" text="Create New Batch" />
+
+        <Label layoutX="14.0" layoutY="50.0" text="Lot Number:" />
+        <TextField fx:id="lotNumberField" layoutX="150.0" layoutY="46.0" />
+
+        <Label layoutX="14.0" layoutY="90.0" text="Production Date:" />
+        <DatePicker fx:id="productionDatePicker" layoutX="150.0" layoutY="86.0" />
+
+        <Label layoutX="14.0" layoutY="130.0" text="Associated Tanks:" />
+        <TextField fx:id="tanksField" layoutX="150.0" layoutY="126.0" />
+
+        <Label layoutX="14.0" layoutY="170.0" text="Associated Workers:" />
+        <TextField fx:id="workersField" layoutX="150.0" layoutY="166.0" />
+
+        <Label layoutX="14.0" layoutY="210.0" text="Type of Product:" />
+        <ChoiceBox fx:id="productTypeChoiceBox" layoutX="150.0" layoutY="206.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Sal" />
+                    <String fx:value="Flor de Sal" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+
+        <Label layoutX="14.0" layoutY="250.0" text="Weight or Quantity:" />
+        <TextField fx:id="weightQuantityField" layoutX="150.0" layoutY="246.0" />
+
+        <Button layoutX="14.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleCreateNewBatchADD" text="Create Batch" />
     </children>
 </AnchorPane>
