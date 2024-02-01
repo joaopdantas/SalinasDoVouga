@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -20,47 +17,33 @@ import java.util.Optional;
 
 public class AdminController {
 
+    public TableColumn usernameColumn;
+    public TableColumn nameColumn;
+    public TableColumn userTypeColumn;
+    public TableColumn citizenCardNumberColumn;
+    public TableColumn fiscalNumberColumn;
+    public TableColumn phoneColumn;
+    public TableColumn addressColumn;
+    public TableColumn localityColumn;
     @FXML
     private TableView<User> userTableView;
 
     @FXML
-    private TextField usernameField;
-
-    @FXML
-    private TextField passwordField;
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField citizenCardNumberField;
-
-    @FXML
-    private TextField fiscalNumberField;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private TextField addressField;
-
-    @FXML
-    private TextField localityField;
-
-    @FXML
-    private TextField userTypeField;
-
-    @FXML
     private void initialize() {
-        System.out.println("Initializing AdminController");
         // Set up the cell value factories for each column
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        citizenCardNumberColumn.setCellValueFactory(new PropertyValueFactory<>("citizenCardNumber"));
+        fiscalNumberColumn.setCellValueFactory(new PropertyValueFactory<>("fiscalNumber"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        localityColumn.setCellValueFactory(new PropertyValueFactory<>("locality"));
         userTypeColumn.setCellValueFactory(new PropertyValueFactory<>("userType"));
 
         // Refresh the table view with current user data
         refreshUserTableView();
     }
+
 
 
     @FXML

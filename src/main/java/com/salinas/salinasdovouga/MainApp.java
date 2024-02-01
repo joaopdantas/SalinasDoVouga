@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 import static javafx.application.Application.launch;
 
 public class MainApp extends Application {
@@ -14,13 +16,23 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         // Load the main FXML file (e.g., login screen)
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        Parent root = loader.load();
+        Parent root;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Register");
 
-        Scene scene = new Scene(root, 800, 600);
+            // Set Scene size based on the preferred size of the loaded FXML root
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
 
-        primaryStage.setTitle("Salinas do Vouga Management - Admin");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            // Adapt the stage size to the preferred size of the loaded FXML root
+            stage.sizeToScene();
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

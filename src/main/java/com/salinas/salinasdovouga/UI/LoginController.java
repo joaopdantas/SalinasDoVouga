@@ -47,10 +47,18 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 
-            // Assuming you have a global stage variable in your application class
+            // Create a new Stage
             Stage stage = new Stage();
             stage.setTitle(userType.toString() + " Dashboard");
-            stage.setScene(new Scene(root, 800, 600));
+
+            // Set Scene size based on the preferred size of the loaded FXML root
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            // Adapt the stage size to the preferred size of the loaded FXML root
+            stage.sizeToScene();
+
+            // Show the new Stage
             stage.show();
 
             // Close the login window
@@ -59,6 +67,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
+
 
     private String getDashboardFXMLPath(UserType userType) {
         switch (userType) {
@@ -87,7 +96,6 @@ public class LoginController {
     @FXML
     private void handleRegisterButton() {
         // Load the registration screen
-        // Load the registration screen
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/salinas/salinasdovouga/registration.fxml"));
 
         Parent root;
@@ -95,10 +103,18 @@ public class LoginController {
             root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Register");
-            stage.setScene(new Scene(root, 800, 600));
+
+            // Set Scene size based on the preferred size of the loaded FXML root
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            // Adapt the stage size to the preferred size of the loaded FXML root
+            stage.sizeToScene();
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
