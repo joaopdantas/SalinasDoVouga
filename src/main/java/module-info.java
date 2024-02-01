@@ -11,4 +11,6 @@ module com.dentalcare.salinasdovouga {
 
     opens com.salinas.salinasdovouga.UI to javafx.fxml;
     exports com.salinas.salinasdovouga.UI;
+    exports com.salinas.salinasdovouga.Controllers.ProductionActions;
+    opens com.salinas.salinasdovouga.Controllers.ProductionActions to javafx.fxml;
 }

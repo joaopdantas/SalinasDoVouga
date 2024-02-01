@@ -8,7 +8,7 @@ public class ProductionLot implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private int lotNumber;
+    private Integer lotNumber;
     private LocalDate productionDate;
     private String associatedTanks;
     private String associatedWorkers;
@@ -24,7 +24,7 @@ public class ProductionLot implements Serializable {
         // Default constructor
     }
 
-    public ProductionLot(int lotNumber, LocalDate productionDate, String associatedTanks,
+    public ProductionLot(Integer lotNumber, LocalDate productionDate, String associatedTanks,
                          String associatedWorkers, String productType, Double weightQuantity) {
         this.lotNumber = lotNumber;
         this.productionDate = productionDate;
@@ -40,7 +40,7 @@ public class ProductionLot implements Serializable {
         return lotNumber;
     }
 
-    public void setLotNumber(int lotNumber) {
+    public void setLotNumber(Integer lotNumber) {
         this.lotNumber = lotNumber;
     }
 

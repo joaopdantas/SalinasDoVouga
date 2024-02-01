@@ -44,8 +44,6 @@ public class AdminController {
         refreshUserTableView();
     }
 
-
-
     @FXML
     private void refreshUserTableView() {
         // Clear existing items
