@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.UI.LoginController">
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="Login Form" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="usernameField" promptText="Username"/>
+        <PasswordField fx:id="passwordField" promptText="Password"/>
+
+        <Button text="Login" onAction="#handleLoginButton"/>
+
+        <Label text="Don't have an account?"/>
+
+        <!-- Add Register button with action to navigate to registration screen -->
+        <Button text="Register" onAction="#handleRegisterButton"/>
+
+        <!-- Add other necessary UI components -->
+
+    </VBox>
+</AnchorPane>
