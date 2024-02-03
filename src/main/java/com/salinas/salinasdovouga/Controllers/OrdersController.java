@@ -11,11 +11,11 @@ public class OrdersController {
     private ComboBox<String> customerComboBox;
 
     @FXML
-    private ListView<String> ordersListView;  // Defina o tipo apropriado para o ListView
+    private ListView<String> ordersListView;
 
     @FXML
     void handleShowOrders(ActionEvent event) {
-        // Lógica para exibir as encomendas selecionadas pelo cliente
+
     }
 
 

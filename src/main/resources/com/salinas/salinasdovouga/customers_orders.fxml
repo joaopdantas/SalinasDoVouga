@@ -11,13 +11,10 @@
     <VBox alignment="CENTER" layoutX="-25.0" spacing="10">
         <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Customer Orders View" />
 
-        <!-- ComboBox para selecionar um cliente -->
         <ComboBox fx:id="customerComboBox" promptText="Select Customer" />
 
-        <!-- Botão para mostrar as encomendas -->
         <Button onAction="#handleShowOrders" text="Show Orders" />
 
-        <!-- ListView para exibir as encomendas -->
         <ListView fx:id="ordersListView" prefHeight="400.0" prefWidth="652.0" />
 
     </VBox>

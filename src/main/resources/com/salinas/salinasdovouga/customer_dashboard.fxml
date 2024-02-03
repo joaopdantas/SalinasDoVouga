@@ -8,21 +8,16 @@
 <VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.CustomerDashboardController">
 
     <HBox spacing="10">
-        <!-- Botão para navegar pelos produtos disponíveis -->
         <Button onAction="#handleBrowseProducts" text="Browse Products" />
 
-        <!-- Botão para realizar um pedido -->
         <Button onAction="#handlePlaceOrder" text="Place Order" />
 
-        <!-- Botão para visualizar histórico de pedidos -->
         <Button onAction="#handleViewOrderHistory" text="Order History" />
 
-        <!-- Botão para gerenciar informações pessoais -->
         <Button onAction="#handleManagePersonalInfo" text="Manage Personal Info" />
     </HBox>
 
     <VBox spacing="10">
-        <!-- Lista para exibir produtos disponíveis -->
         <ListView fx:id="availableProductsListView" />
     </VBox>
 
