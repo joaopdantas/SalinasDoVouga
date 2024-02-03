@@ -1,13 +1,15 @@
 package com.salinas.salinasdovouga.Controllers.ProductionActions;
 
 import com.salinas.salinasdovouga.Controllers.ProductionManagerController;
+import com.salinas.salinasdovouga.Model.ProductType;
 import com.salinas.salinasdovouga.Model.ProductionLot;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 import java.time.LocalDate;
 
@@ -32,7 +34,12 @@ public class CreateNewBatchController {
     private TextField workersField;
 
     @FXML
-    private ChoiceBox<String> productTypeChoiceBox;
+    private ChoiceBox<ProductType> productTypeChoiceBox;
+
+    @FXML
+    private void initialize() {
+        productTypeChoiceBox.setItems(FXCollections.observableArrayList(ProductType.values()));
+    }
 
     @FXML
     private TextField weightQuantityField;
@@ -45,14 +52,14 @@ public class CreateNewBatchController {
             LocalDate productionDate = productionDatePicker.getValue().atStartOfDay().toLocalDate();
             String tanks = tanksField.getText();
             String workers = workersField.getText();
-            String productType = productTypeChoiceBox.getValue();
+            ProductType productType = productTypeChoiceBox.getValue();
             double weightQuantity = Double.parseDouble(weightQuantityField.getText());
 
             // Create a new ProductionLot
             ProductionLot newProductionLot = new ProductionLot(lotNumber, productionDate, tanks, workers, productType, weightQuantity);
             newProductionLot.setAssociatedTanks(tanks);
             newProductionLot.setAssociatedWorkers(workers);
-            newProductionLot.setProductType(productType);
+            newProductionLot.setProductType(String.valueOf(productType));
             newProductionLot.setWeightQuantity(weightQuantity);
 
             // Call the method in the parent controller to add the new production lot
@@ -78,5 +85,6 @@ public class CreateNewBatchController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
 
 }

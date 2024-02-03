@@ -1,6 +1,7 @@
 module com.dentalcare.salinasdovouga {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.logging;
 
     opens com.salinas.salinasdovouga to javafx.fxml;
     opens com.salinas.salinasdovouga.Controllers to javafx.fxml;

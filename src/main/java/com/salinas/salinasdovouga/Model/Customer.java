@@ -16,6 +16,9 @@ public class Customer extends User implements Serializable {
         this.orders = new ArrayList<>();
     }
 
+    public String getUsername() {
+        return super.getUsername();
+    }
     public List<Order> getOrders() {
         return orders;
     }

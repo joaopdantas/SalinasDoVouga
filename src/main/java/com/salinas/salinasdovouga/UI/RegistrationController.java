@@ -62,7 +62,10 @@ public class RegistrationController {
         }
     }
 
-
+    public void configureComboBoxForCustomer() {
+        roleComboBox.getItems().setAll("CUSTOMER");
+        roleComboBox.setValue("CUSTOMER");
+    }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

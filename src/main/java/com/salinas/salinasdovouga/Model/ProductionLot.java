@@ -20,7 +20,7 @@ public class ProductionLot implements Serializable {
 
 
 
-    public ProductionLot() {
+    public ProductionLot(int lotNumber, LocalDate productionDate, String tanks, String workers, ProductType productType, double weightQuantity) {
         // Default constructor
     }
 

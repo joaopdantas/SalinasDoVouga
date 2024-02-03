@@ -6,6 +6,7 @@ import com.salinas.salinasdovouga.Users.UserType;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserAuthentication {
 
@@ -63,6 +64,12 @@ public class UserAuthentication {
             }
         }
         return null;
+    }
+
+    public static List<User> getUsersByType(UserType userType) {
+        return users.stream()
+                .filter(user -> user.getUserType() == userType)
+                .collect(Collectors.toList());
     }
 
     public static List<User> getUsers() {

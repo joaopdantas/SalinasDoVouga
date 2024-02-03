@@ -6,13 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.salinas.salinasdovouga.Controllers.SalesManagerController"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox alignment="CENTER" spacing="10">
-    <Label text="Sales Manager Dashboard"/>
-    <!-- Add more UI components based on sales manager dashboard requirements -->
-    <Button text="Manage Sales" onAction="#handleManageSales"/>
-</VBox>
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.SalesManagerController">
+    <children>
+        <VBox alignment="CENTER" spacing="10" />
+
+        <TableView fx:id="userTableView" layoutY="50.0" prefHeight="387.0" prefWidth="681.0">
+            <columns>
+                <TableColumn fx:id="usernameColumn" text="Username" />
+                <TableColumn fx:id="nameColumn" text="Nome" />
+                <TableColumn fx:id="userTypeColumn" text="User Type" />
+                <TableColumn fx:id="citizenCardNumberColumn" text="Nº Cartão" />
+                <TableColumn fx:id="fiscalNumberColumn" text="NIF" />
+                <TableColumn fx:id="phoneColumn" text="Nº Telemóvel" />
+                <TableColumn fx:id="addressColumn" text="Endereço" />
+                <TableColumn fx:id="localityColumn" minWidth="0.0" prefWidth="120.80001220703127" text="Localidade" />
+            </columns>
+        </TableView>
+
+        <Button layoutX="214.0" layoutY="14.0" onAction="#handleCostumeOrders" text="Customers Orders" />
+        <Button layoutX="14.0" layoutY="14.0" onAction="#handleCreateCustomer" text="Create Customer" />
+        <Button layoutX="114.0" layoutY="14.0" onAction="#handleDeleteUser" text="Delete Customer" />
+    </children>
 </AnchorPane>

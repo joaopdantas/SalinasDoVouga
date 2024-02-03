@@ -25,14 +25,7 @@
         <TextField fx:id="workersField" layoutX="150.0" layoutY="166.0" />
 
         <Label layoutX="14.0" layoutY="210.0" text="Type of Product:" />
-        <ChoiceBox fx:id="productTypeChoiceBox" layoutX="150.0" layoutY="206.0">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Sal" />
-                    <String fx:value="Flor de Sal" />
-                </FXCollections>
-            </items>
-        </ChoiceBox>
+        <ChoiceBox fx:id="productTypeChoiceBox" layoutX="150.0" layoutY="206.0"> </ChoiceBox>
 
         <Label layoutX="14.0" layoutY="250.0" text="Weight or Quantity:" />
         <TextField fx:id="weightQuantityField" layoutX="150.0" layoutY="246.0" />
