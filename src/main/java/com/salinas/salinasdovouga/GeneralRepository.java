@@ -1,5 +1,6 @@
 package com.salinas.salinasdovouga;
 
+import com.salinas.salinasdovouga.Model.FinalProductLot;
 import com.salinas.salinasdovouga.Model.ProductionLot;
 
 import java.io.*;
@@ -12,6 +13,7 @@ public class GeneralRepository implements Serializable {
 
     private Map<String, ProductionLot> productionLots = new HashMap<>();
     // Add more maps for other entities if needed
+    private Map<String, FinalProductLot> finalProducts = new HashMap<>();
 
     private GeneralRepository() {
     }
@@ -20,6 +22,9 @@ public class GeneralRepository implements Serializable {
         return productionLots;
     }
     // Add more getters for other entities if needed
+    public Map<String, FinalProductLot> getFinalProducts() {
+        return finalProducts;
+    }
 
     public static GeneralRepository getRepository() {
         ReentrantLock lock = new ReentrantLock();
