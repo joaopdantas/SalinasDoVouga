@@ -1,14 +1,17 @@
 package com.salinas.salinasdovouga.Controllers;
 
+import com.salinas.salinasdovouga.Controllers.ProductionActions.CreateFinalProductController;
+import com.salinas.salinasdovouga.Controllers.ProductionActions.CreateNewBatchController;
 import com.salinas.salinasdovouga.GeneralRepository;
-import javafx.collections.FXCollections;
+import com.salinas.salinasdovouga.Model.ProductionLot;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import com.salinas.salinasdovouga.Controllers.ProductionActions.CreateNewBatchController;
-import com.salinas.salinasdovouga.Model.ProductionLot;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,6 +27,7 @@ public class ProductionManagerController {
     private TableView<ProductionLot> productionTableView;
 
 
+
     @FXML
     private TableColumn<ProductionLot, String> lotNumberColumn;
     @FXML
@@ -36,6 +40,7 @@ public class ProductionManagerController {
     private TableColumn<ProductionLot, String> productTypeColumn;
     @FXML
     private TableColumn<ProductionLot, String> weightQuantityColumn;
+
 
     private GeneralRepository repository;
 
@@ -50,10 +55,11 @@ public class ProductionManagerController {
         weightQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("weightQuantity"));
 
         // Initialize the repository
-        repository = GeneralRepository.getRepository();
+        repository = GeneralRepository.deserialize("repository.ser");
 
         // Refresh the table view with current production lot data
         refreshProductionTableView();
+
     }
 
 
@@ -68,8 +74,6 @@ public class ProductionManagerController {
 
         productionTableView.getItems().addAll(productionLots.values());
     }
-
-
 
     @FXML
     private void handleCreateNewBatch() {
@@ -99,9 +103,13 @@ public class ProductionManagerController {
     }
 
     public void addNewProductionLot(ProductionLot newProductionLot) {
-        // TODO: Add code to save the newProductionLot or perform any other necessary actions
-        // Use the correct lot number as the key when adding to the repository
-        GeneralRepository.getRepository().getProductionLots().put(String.valueOf(newProductionLot.getLotNumber()), newProductionLot);
+        // TODO: Adicione código para salvar o novo ProductionLot ou realizar outras ações necessárias
+        // Use o número do lote correto como chave ao adicionar ao repositório
+        GeneralRepository repository = GeneralRepository.getRepository();
+        repository.getProductionLots().put(String.valueOf(newProductionLot.getLotNumber()), newProductionLot);
+
+        // Salve as alterações no repositório
+        repository.serialize("repository.ser");
 
         // For now, you can print the newProductionLot details
         System.out.println("New Production Lot: " + newProductionLot);
@@ -110,6 +118,31 @@ public class ProductionManagerController {
         refreshProductionTableView();
     }
 
+    @FXML
+    public void handleCreateFinalBatch(ActionEvent actionEvent) {
+        try {
+            // Carrega o novo FXML e seu controlador
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/salinas/salinasdovouga/Production Actions/finalproductbatch.fxml"));
+            Parent root = loader.load();
+            FinalProductBatchController finalProductBatchController = loader.getController();
+
+            // Cria uma nova cena
+            Scene scene = new Scene(root);
+
+            // Cria um novo estágio (janela)
+            Stage stage = new Stage();
+            stage.setTitle("Create Final Batch");
+            stage.setScene(scene);
+
+            // Exibe a nova janela
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Lida com a exceção (por exemplo, exibindo uma mensagem de erro)
+        }
+    }
+
+
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -117,4 +150,7 @@ public class ProductionManagerController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+
+
 }

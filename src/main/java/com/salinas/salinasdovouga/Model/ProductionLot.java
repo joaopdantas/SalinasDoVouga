@@ -20,17 +20,13 @@ public class ProductionLot implements Serializable {
 
 
 
-    public ProductionLot(int lotNumber, LocalDate productionDate, String tanks, String workers, ProductType productType, double weightQuantity) {
-        // Default constructor
-    }
-
     public ProductionLot(Integer lotNumber, LocalDate productionDate, String associatedTanks,
-                         String associatedWorkers, String productType, Double weightQuantity) {
+                         String associatedWorkers, ProductType productType, Double weightQuantity) {
         this.lotNumber = lotNumber;
         this.productionDate = productionDate;
         this.associatedTanks = associatedTanks;
         this.associatedWorkers = associatedWorkers;
-        this.productType = productType;
+        this.productType = String.valueOf(productType);
         this.weightQuantity = weightQuantity;
     }
 
@@ -110,4 +106,5 @@ public class ProductionLot implements Serializable {
     public int hashCode() {
         return Objects.hash(lotNumber);
     }
+    
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="445.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.ProductionManagerController">
+<AnchorPane id="AnchorPane" prefHeight="445.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.salinas.salinasdovouga.Controllers.ProductionManagerController">
     <children>
         <VBox alignment="CENTER" spacing="10" />
 
@@ -21,12 +21,10 @@
                 <!-- Add more columns based on your data model -->
             </columns>
         </TableView>
-
-
         <Button layoutX="664.0" layoutY="45.0" onAction="#handleCreateNewBatch" text="Create New Batch" />
         <!--<Button layoutX="422.0" layoutY="233.0" onAction="#handleManageProduction" text="Manage Production Process" />
         <Button layoutX="433.0" layoutY="166.0" onAction="#handleViewProductionDetails" text="View Production Details" />
-        <Button layoutX="412.0" layoutY="63.0" onAction="#handleAssociateBatches" text="Associate Batches with Workers" />
-        <Button layoutX="414.0" layoutY="14.0" onAction="#handleGenerateFinalBatches" text="Generate Final Product Batches" /> -->
+        <Button layoutX="412.0" layoutY="63.0" onAction="#handleAssociateBatches" text="Associate Batches with Workers" />-->
+        <Button layoutX="664.0" layoutY="85.0" onAction="#handleCreateFinalBatch" text="Final Product Batches" wrapText="true" />
     </children>
 </AnchorPane>

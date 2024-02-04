@@ -48,18 +48,26 @@ public class CreateNewBatchController {
     private void handleCreateNewBatchADD() {
         try {
             // Retrieve information from the FXML fields
-            int lotNumber = Integer.parseInt(lotNumberField.getText());
-            LocalDate productionDate = productionDatePicker.getValue().atStartOfDay().toLocalDate();
+            String lotNumberText = lotNumberField.getText();
             String tanks = tanksField.getText();
             String workers = workersField.getText();
-            ProductType productType = productTypeChoiceBox.getValue();
-            double weightQuantity = Double.parseDouble(weightQuantityField.getText());
+            String weightQuantityText = weightQuantityField.getText();
 
-            // Create a new ProductionLot
+            // Perform validations
+            if (lotNumberText.isEmpty() || tanks.isEmpty() || workers.isEmpty() || weightQuantityText.isEmpty()) {
+                showAlert("Error", "Please fill in all fields with valid data.");
+                return;
+            }
+
+            int lotNumber = Integer.parseInt(lotNumberText);
+            LocalDate productionDate = productionDatePicker.getValue().atStartOfDay().toLocalDate();
+            ProductType productType = productTypeChoiceBox.getValue();
+            double weightQuantity = Double.parseDouble(weightQuantityText);
+
+            /// Create a new ProductionLot
             ProductionLot newProductionLot = new ProductionLot(lotNumber, productionDate, tanks, workers, productType, weightQuantity);
             newProductionLot.setAssociatedTanks(tanks);
             newProductionLot.setAssociatedWorkers(workers);
-            newProductionLot.setProductType(String.valueOf(productType));
             newProductionLot.setWeightQuantity(weightQuantity);
 
             // Call the method in the parent controller to add the new production lot
@@ -70,8 +78,8 @@ public class CreateNewBatchController {
 
             showAlert("Batch Created", "New batch created successfully!");
 
-        } catch (NumberFormatException | NullPointerException e) {
-            showAlert("Error", "Please fill in all fields with valid data.");
+        } catch (NumberFormatException e) {
+            showAlert("Error", "Please enter valid numeric values for lot number and weight quantity.");
             e.printStackTrace();
         }
     }
