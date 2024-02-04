@@ -1,7 +1,7 @@
 package com.salinas.salinasdovouga.Controllers;
 
-import com.salinas.salinasdovouga.Controllers.ProductionActions.CreateFinalProductController;
 import com.salinas.salinasdovouga.Controllers.ProductionActions.CreateNewBatchController;
+import com.salinas.salinasdovouga.Controllers.ProductionActions.FinalProductBatchController;
 import com.salinas.salinasdovouga.GeneralRepository;
 import com.salinas.salinasdovouga.Model.ProductionLot;
 import javafx.event.ActionEvent;

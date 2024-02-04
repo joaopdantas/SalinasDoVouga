@@ -1,4 +1,4 @@
-package com.salinas.salinasdovouga.Controllers;
+package com.salinas.salinasdovouga.Controllers.ProductionActions;
 
 import com.salinas.salinasdovouga.Controllers.ProductionActions.CreateFinalProductController;
 import com.salinas.salinasdovouga.Model.FinalProduct;

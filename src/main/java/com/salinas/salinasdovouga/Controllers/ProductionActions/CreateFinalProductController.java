@@ -1,6 +1,5 @@
 package com.salinas.salinasdovouga.Controllers.ProductionActions;
 
-import com.salinas.salinasdovouga.Controllers.FinalProductBatchController;
 import com.salinas.salinasdovouga.Model.ProductionLot;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
