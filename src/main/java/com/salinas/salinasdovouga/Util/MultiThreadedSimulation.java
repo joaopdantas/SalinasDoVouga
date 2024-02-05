@@ -26,7 +26,7 @@ public class MultiThreadedSimulation {
     private static void simulateUserActions() {
         // Simulate user actions (e.g., login, registration, etc.)
         User newUser = new User("user", "password", "User",
-                "123456789", "user@salinas.com", "City", "Locality", "Region", UserType.CUSTOMER);
+                "123456789", "123456789", "City", "Rua X", "Region", UserType.CUSTOMER);
 
         // Simulate registration
         boolean registrationResult = UserAuthentication.registerUser(newUser);
