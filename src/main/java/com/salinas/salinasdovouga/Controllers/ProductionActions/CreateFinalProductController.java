@@ -12,7 +12,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Map;
 
 public class CreateFinalProductController {
@@ -52,14 +51,7 @@ public class CreateFinalProductController {
         }
     }
 
-    public void setAssociatedLots(List<ProductionLot> productionLots) {
-        if (productionLots != null && !productionLots.isEmpty()) {
-            System.out.println("setAssociatedLots called with " + productionLots.size() + " lots.");
-            associatedLotsChoiceBox.setItems(FXCollections.observableArrayList(productionLots));
-        } else {
-            System.out.println("setAssociatedLots: Empty or null list of production lots.");
-        }
-    }
+
 
     @FXML
     private void CreateFinalProduct(ActionEvent actionEvent) {
@@ -79,16 +71,12 @@ public class CreateFinalProductController {
 
             // Create a new FinalProduct
             FinalProduct newFinalProduct = new FinalProduct(
-                    lotNumber,
+                    lotNumberText,
                     productionDate,
-                    associatedLot.getAssociatedTanks(),
-                    associatedLot.getAssociatedWorkers(),
-                    associatedLot.getProductType(),
-                    associatedLot.getWeightQuantity(),
-                    "your_final_product_id_here"  // You need to provide a proper final product ID
-            );
+                    associatedLot);
 
             // Call the method in the parent controller to add the new final product
+
             parentController.addNewFinalProduct(newFinalProduct);
 
             // Refresh the table view in the parent controller
@@ -96,11 +84,13 @@ public class CreateFinalProductController {
 
             showAlert("Final Product Created", "New final product created successfully!");
 
+
         } catch (NumberFormatException e) {
             showAlert("Error", "Please enter valid numeric values for lot number.");
             e.printStackTrace();
         }
     }
+
 
 
     private void showAlert(String title, String content) {

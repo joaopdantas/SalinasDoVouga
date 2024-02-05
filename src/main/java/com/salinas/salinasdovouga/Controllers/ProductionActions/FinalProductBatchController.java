@@ -21,14 +21,15 @@ public class FinalProductBatchController {
     @FXML
     private TableView<FinalProduct> finalProductTableView;
 
-    @FXML
-    private TableColumn<FinalProduct, String> finalProductLotNumberColumn;
 
     @FXML
-    private TableColumn<FinalProduct, LocalDate> finalProductLocalDateTableColumn;
+    private TableColumn<FinalProduct, String> finalProductIDColumn;
 
     @FXML
-    private TableColumn<FinalProduct, String> associatedLots;
+    private TableColumn<FinalProduct, LocalDate> finalProductDateColumn;
+
+    @FXML
+    private TableColumn<FinalProduct, String> associatedLotsColumn;
 
     private GeneralRepository repository;
 
@@ -38,9 +39,9 @@ public class FinalProductBatchController {
     @FXML
     private void initialize() {
         // Set up the cell value factories for each column
-        finalProductLotNumberColumn.setCellValueFactory(new PropertyValueFactory<>("ProductID"));
-        finalProductLocalDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("productionDate"));
-        associatedLots.setCellValueFactory(new PropertyValueFactory<>("associatedTanks"));
+        finalProductIDColumn.setCellValueFactory(new PropertyValueFactory<>("finalProductID"));
+        finalProductDateColumn.setCellValueFactory(new PropertyValueFactory<>("finalProductionDate"));
+        associatedLotsColumn.setCellValueFactory(new PropertyValueFactory<>("associatedLots"));
 
         // Initialize the repository
         repository = GeneralRepository.deserialize("repository.ser");
@@ -58,12 +59,15 @@ public class FinalProductBatchController {
             Parent root = loader.load();
             CreateFinalProductController createFinalProductController = loader.getController();
 
+            // Define o controlador pai
+            createFinalProductController.setParentControllerFinalProduct(this);
+
             // Cria uma nova cena
             Scene scene = new Scene(root);
 
             // Cria um novo estágio (janela)
             Stage stage = new Stage();
-            stage.setTitle("Create Final Batch");
+            stage.setTitle("Create Final Product");
             stage.setScene(scene);
 
             // Exibe a nova janela
@@ -84,7 +88,7 @@ public class FinalProductBatchController {
         repository.serialize("repository.ser");
 
         // For now, you can print the newProductionLot details
-        System.out.println("New Production Lot: " + newFinalProduct);
+        System.out.println("New FinalProduct Lot: " + newFinalProduct);
 
         // Refresh the table view
         refreshFinalProductTableView();

@@ -12,9 +12,9 @@
 
         <TableView fx:id="finalProductTableView" layoutX="30.0" layoutY="29.0" prefHeight="376.0" prefWidth="627.0">
             <columns>
-                <TableColumn fx:id="finalProductLotNumberColumn" text="ProductID" />
-                <TableColumn fx:id="finalProductLocalDateTableColumn" prefWidth="95.1999740600586" text="Product Date" />
-                <TableColumn fx:id="associatedLots" prefWidth="113.60003662109375" text="AssociatedLots" />
+                <TableColumn fx:id="finalProductIDColumn" text="ProductID" />
+                <TableColumn fx:id="finalProductDateColumn" prefWidth="95.1999740600586" text="Product Date" />
+                <TableColumn fx:id="associatedLotsColumn" prefWidth="449.0" text="AssociatedLots" />
 
                 <!-- Add more columns based on your data model -->
             </columns>

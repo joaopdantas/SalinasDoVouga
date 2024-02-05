@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FinalProduct extends ProductionLot implements Serializable {
+public class FinalProduct implements Serializable {
 
         private static final long serialVersionUID = 1L;
 
@@ -15,14 +15,12 @@ public class FinalProduct extends ProductionLot implements Serializable {
     private LocalDate finalProductionDate;
     private List<ProductionLot> associatedLots;
 
-    public FinalProduct(Integer lotNumber, LocalDate productionDate, String associatedTanks, String associatedWorkers, String productType, Double weightQuantity, String finalProductID) {
-        super(lotNumber, productionDate, associatedTanks, associatedWorkers, ProductType.valueOf(productType), weightQuantity);
+    public FinalProduct(String finalProductID, LocalDate finalProductionDate, ProductionLot associatedLot) {
         this.finalProductID = finalProductID;
         this.finalProductionDate = finalProductionDate;
         this.associatedLots = new ArrayList<>();
+
     }
-
-
 
     public String getFinalProductID() {
         return finalProductID;
