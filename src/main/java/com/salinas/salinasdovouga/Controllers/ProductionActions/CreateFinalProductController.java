@@ -1,5 +1,7 @@
 package com.salinas.salinasdovouga.Controllers.ProductionActions;
 
+import com.salinas.salinasdovouga.GeneralRepository;
+import com.salinas.salinasdovouga.Model.FinalProduct;
 import com.salinas.salinasdovouga.Model.ProductionLot;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -11,6 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class CreateFinalProductController {
 
@@ -29,6 +32,26 @@ public class CreateFinalProductController {
     @FXML
     private ChoiceBox<ProductionLot> associatedLotsChoiceBox;
 
+    @FXML
+    private void initialize() {
+        refreshAssociatedLotsChoiceBox();
+    }
+
+    public void refreshAssociatedLotsChoiceBox() {
+        // Clear existing items
+        associatedLotsChoiceBox.getItems().clear();
+
+        // Load all production lots from the repository and add them to the ChoiceBox
+        Map<String, ProductionLot> productionLots = GeneralRepository.getRepository().getProductionLots();
+        System.out.println("Production Lots from Repository: " + productionLots);
+
+        if (productionLots != null && !productionLots.isEmpty()) {
+            associatedLotsChoiceBox.setItems(FXCollections.observableArrayList(productionLots.values()));
+        } else {
+            System.out.println("No production lots available.");
+        }
+    }
+
     public void setAssociatedLots(List<ProductionLot> productionLots) {
         if (productionLots != null && !productionLots.isEmpty()) {
             System.out.println("setAssociatedLots called with " + productionLots.size() + " lots.");
@@ -39,7 +62,7 @@ public class CreateFinalProductController {
     }
 
     @FXML
-    private void createFinalProduct(ActionEvent actionEvent) {
+    private void CreateFinalProduct(ActionEvent actionEvent) {
         try {
             // Retrieve information from the FXML fields
             String lotNumberText = finalProductLotNumberField.getText();
@@ -55,10 +78,18 @@ public class CreateFinalProductController {
             int lotNumber = Integer.parseInt(lotNumberText);
 
             // Create a new FinalProduct
-           // IMPORTANTE RESOLVER FinalProduct newFinalProduct = new FinalProduct(lotNumber, productionDate, associatedLots);
+            FinalProduct newFinalProduct = new FinalProduct(
+                    lotNumber,
+                    productionDate,
+                    associatedLot.getAssociatedTanks(),
+                    associatedLot.getAssociatedWorkers(),
+                    associatedLot.getProductType(),
+                    associatedLot.getWeightQuantity(),
+                    "your_final_product_id_here"  // You need to provide a proper final product ID
+            );
 
             // Call the method in the parent controller to add the new final product
-           // parentController.addNewFinalProduct(newFinalProduct);
+            parentController.addNewFinalProduct(newFinalProduct);
 
             // Refresh the table view in the parent controller
             parentController.refreshFinalProductTableView();
@@ -71,6 +102,7 @@ public class CreateFinalProductController {
         }
     }
 
+
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -78,4 +110,6 @@ public class CreateFinalProductController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+
 }

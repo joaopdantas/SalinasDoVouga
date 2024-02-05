@@ -1,35 +1,57 @@
 package com.salinas.salinasdovouga.Controllers.ProductionActions;
 
-import com.salinas.salinasdovouga.Controllers.ProductionActions.CreateFinalProductController;
+import com.salinas.salinasdovouga.GeneralRepository;
 import com.salinas.salinasdovouga.Model.FinalProduct;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Map;
 
 public class FinalProductBatchController {
 
 
     @FXML
-    private TableColumn<?, ?> associatedLots;
+    private TableView<FinalProduct> finalProductTableView;
 
     @FXML
-    private TableColumn<?, ?> finalProductLotNumberColumn;
+    private TableColumn<FinalProduct, String> finalProductLotNumberColumn;
 
     @FXML
-    private TableView<?> finalProductTableView;
+    private TableColumn<FinalProduct, LocalDate> finalProductLocalDateTableColumn;
 
     @FXML
-    private TableColumn<?, ?> productionDateColumn;
+    private TableColumn<FinalProduct, String> associatedLots;
+
+    private GeneralRepository repository;
+
+
+
 
     @FXML
-    public void handleCreateFinalProduct(ActionEvent actionEvent) {
+    private void initialize() {
+        // Set up the cell value factories for each column
+        finalProductLotNumberColumn.setCellValueFactory(new PropertyValueFactory<>("ProductID"));
+        finalProductLocalDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("productionDate"));
+        associatedLots.setCellValueFactory(new PropertyValueFactory<>("associatedTanks"));
+
+        // Initialize the repository
+        repository = GeneralRepository.deserialize("repository.ser");
+
+        // Refresh the table view with current production lot data
+        refreshFinalProductTableView();
+
+    }
+
+    @FXML
+    public void handleCreateFinalProduct() {
         try {
             // Carrega o novo FXML e seu controlador
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/salinas/salinasdovouga/Production Actions/create_final_product.fxml"));
@@ -53,8 +75,33 @@ public class FinalProductBatchController {
     }
 
     public void addNewFinalProduct(FinalProduct newFinalProduct) {
+        // TODO: Adicione código para salvar o novo ProductionLot ou realizar outras ações necessárias
+        // Use o número do lote correto como chave ao adicionar ao repositório
+        GeneralRepository repository = GeneralRepository.getRepository();
+        repository.getFinalProducts().put(String.valueOf(newFinalProduct.getFinalProductID()), newFinalProduct);
+
+        // Salve as alterações no repositório
+        repository.serialize("repository.ser");
+
+        // For now, you can print the newProductionLot details
+        System.out.println("New Production Lot: " + newFinalProduct);
+
+        // Refresh the table view
+        refreshFinalProductTableView();
     }
 
+    @FXML
     public void refreshFinalProductTableView() {
+        // Clear existing items
+        finalProductTableView.getItems().clear();
+
+        // Load all production lots from the repository and add them to the TableView
+        Map<String, FinalProduct> finalProducts = GeneralRepository.getRepository().getFinalProducts();
+        System.out.println("Final Products from Repository: " + finalProducts);
+
+        finalProductTableView.getItems().addAll(finalProducts.values());
     }
+
+
+
 }

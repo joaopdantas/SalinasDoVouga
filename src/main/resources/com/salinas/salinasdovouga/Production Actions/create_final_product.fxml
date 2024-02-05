@@ -18,7 +18,7 @@
         <TextField fx:id="finalProductLotNumberField" layoutX="220.0" layoutY="46.0" />
 
         <Label layoutX="14.0" layoutY="90.0" text="Production Date:" />
-        <DatePicker fx:id="finalproductionDateField" layoutX="220.0" layoutY="86.0" />
+        <DatePicker fx:id="finalProductionDateField" layoutX="220.0" layoutY="86.0" />
 
         <Label layoutX="14.0" layoutY="130.0" text="Associated Production Lots:" />
         <ChoiceBox fx:id="associatedLotsChoiceBox" layoutX="220.0" layoutY="126.0"> </ChoiceBox>
