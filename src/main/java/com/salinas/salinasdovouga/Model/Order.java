@@ -3,15 +3,17 @@ package com.salinas.salinasdovouga.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static final AtomicInteger orderCounter = new AtomicInteger(1);
 
-    private int orderNumber;
-    private List<Product> products;
+    private final int orderNumber;
+    private final List<Product> products;
 
-    public Order(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public Order() {
+        this.orderNumber = orderCounter.getAndIncrement();
         this.products = new ArrayList<>();
     }
 

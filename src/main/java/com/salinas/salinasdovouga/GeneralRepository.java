@@ -1,10 +1,13 @@
 package com.salinas.salinasdovouga;
 
 import com.salinas.salinasdovouga.Model.FinalProduct;
+import com.salinas.salinasdovouga.Model.Order;
 import com.salinas.salinasdovouga.Model.ProductionLot;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -14,6 +17,15 @@ public class GeneralRepository implements Serializable {
     private Map<String, ProductionLot> productionLots = new HashMap<>();
     // Add more maps for other entities if needed
     private Map<String, FinalProduct> finalProducts = new HashMap<>();
+
+    private List<Order> orders = new ArrayList<>(); // Add a list to store orders
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
 
     private GeneralRepository() {
     }
